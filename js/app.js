@@ -11,19 +11,10 @@ AddItemToBuyController.$inject=['ShoppingListCheckOffService'];
 function AddItemToBuyController(ShoppingListCheckOffService){
   var addItem = this;
 
-//  addItem.itemName="";
-  //addItem.itemQuantity="";
   ShoppingListCheckOffService.addItemToBuy('cookies',10);
   ShoppingListCheckOffService.addItemToBuy('milks',2);
   ShoppingListCheckOffService.addItemToBuy('chocaltes',20);
   addItem.addItemToBuy=function(){
-  /*  if((addItem.itemName === undefined) || (addItem.itemName ==="") ){
-      return;
-    }
-
-    if((addItem.itemQuantity === undefined) || (addItem.itemQuantity ==="") || (addItem.itemQuantity <= 0)){
-      return;
-    }*/
     ShoppingListCheckOffService.addItemToBuy(addItem.itemName, addItem.itemQuantity);
   };
 
