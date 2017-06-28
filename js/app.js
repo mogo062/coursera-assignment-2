@@ -13,12 +13,22 @@ function AddItemToBuyController(ShoppingListCheckOffService){
 
   ShoppingListCheckOffService.addItemToBuy('Cookies',10);
   ShoppingListCheckOffService.addItemToBuy('Sugary Drinks',2);
-  ShoppingListCheckOffService.addItemToBuy('choclates',20);
+  ShoppingListCheckOffService.addItemToBuy('choclate',20);
   ShoppingListCheckOffService.addItemToBuy('Pepto Bismol',10);
   ShoppingListCheckOffService.addItemToBuy('Chips',8);
+  ShoppingListCheckOffService.addItemToBuy('Ice cream',3);
+  ShoppingListCheckOffService.addItemToBuy('Tomatoes',5);
+  ShoppingListCheckOffService.addItemToBuy('Corn',1);
+  ShoppingListCheckOffService.addItemToBuy('Apple',6);
+  ShoppingListCheckOffService.addItemToBuy('Bananas',6);
+  ShoppingListCheckOffService.addItemToBuy('Bread',6);
+  ShoppingListCheckOffService.addItemToBuy('Milk',1);
+  ShoppingListCheckOffService.addItemToBuy('Eggs',7);
+  ShoppingListCheckOffService.addItemToBuy('Mustard',4);
 
   addItem.addItemToBuy=function(){
     ShoppingListCheckOffService.addItemToBuy(addItem.itemName, addItem.itemQuantity);
+
   };
 
   addItem.validateItemNameField = function(){
@@ -112,7 +122,7 @@ service.appendOrCopyArrayToArray = function (fromArr, toArr){
         toArr.push(item);
       });
   }
-}
+};
 
 };
 
