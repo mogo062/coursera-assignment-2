@@ -38,34 +38,57 @@
             class="form-control" ng-keyup="addItem.validateItemNameField();" required>
         </div>
         <div class="form-group {{addItem.itemQtyClass}}">
-            <input type="number" name="itemQuantity" ng-model="addItem.itemQuantity"
+            <input type="text" name="itemQuantity" ng-model="addItem.itemQuantity"
             placeholder="Item Quantity"
             class="form-control" ng-change="addItem.validateItemQuantityField();" required>
         </div>
         <div class="form-group">
-              <button class="btn btn-default" ng-disabled="form.itemName.$error.required || form.itemQuantity.$error.required || addItem.itemQuantity <=0" ng-click="addItem.addItemToBuy();"><span class="glyphicon glyphicon-plus"></span> Bought</button></li>
+              <button class="btn btn-default" ng-disabled="form.itemName.$error.required || form.itemQuantity.$error.required " ng-click="addItem.addItemToBuy();"><span class="glyphicon glyphicon-plus"></span> Bought</button></li>
         </div>
       </form>
     </div>
     <!-- To Buy List -->
     <div class="col-md-6" ng-controller="ToBuyController as toBuy">
       <h2>To Buy:</h2>
-      <ul>
+      <table class="table table-striped">
+        <tr ng-repeat="item in toBuy.items">
+          <td>Buy</td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.name}}</td>
+          <td>
+              <button class="btn btn-default" ng-click="toBuy.addItemFromToBuyToBought($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+          </td>
+        </tr>
+        <tr ng-if="toBuy.items.length === 0">
+          <td><div class="emptyMessage">Everything is bought!</div></td>
+        </tr>
+      </table>
+      <!--ul>
         <li ng-repeat="item in toBuy.items"> Buy {{item.quantity}} {{item.name}} <button class="btn btn-default" ng-click="toBuy.addItemFromToBuyToBought($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
-        <!---li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
-        <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li-->
       </ul>
-      <div ng-if="toBuy.items.length === 0" class="emptyMessage">Everything is bought!</div>
+      <div ng-if="toBuy.items.length === 0" class="emptyMessage">Everything is bought!</div-->
     </div>
 
     <!-- Already Bought List -->
     <div class="col-md-6" ng-controller="AlreadyBoughtController as alreadyBought">
      <h2>Already Bought:</h2>
-     <ul>
-        <li ng-repeat="item in alreadyBought.items"> Bought {{item.quantity}} {{item.name}} <button class="btn btn-default" ng-click="alreadyBought.removeItemFromBought($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
-       <!--li>Bought 10 cookies</li-->
+     <table class="table table-striped">
+       <tr ng-repeat="item in alreadyBought.items">
+          <td>Bought</td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.name}}</td>
+          <td>
+               <button class="btn btn-default" ng-click="alreadyBought.removeItemFromBought($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+          </td>
+       </tr>
+       <tr ng-if="alreadyBought.items.length === 0">
+           <td colspan="5"><div  class="emptyMessage">Nothing bought yet.</div></td>
+       </tr>
+    </table>
+     <!--ul>
+        <li ng-repeat="item in alreadyBought.items">Bought {{item.quantity}} {{item.name}} <button class="btn btn-default" ng-click="alreadyBought.removeItemFromBought($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
      </ul>
-     <div ng-if="alreadyBought.items.length === 0" class="emptyMessage">Nothing bought yet.</div>
+     <div ng-if="alreadyBought.items.length === 0" class="emptyMessage">Nothing bought yet.</div -->
     </div>
   </div>
 </div>

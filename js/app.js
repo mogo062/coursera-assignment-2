@@ -30,7 +30,7 @@ function AddItemToBuyController(ShoppingListCheckOffService){
   };
 
   addItem.validateItemQuantityField = function(){
-    if((addItem.itemQuantity === undefined) || (addItem.itemQuantity ==="") || (addItem.itemQuantity <= 0)){
+    if((addItem.itemQuantity === undefined) || (addItem.itemQuantity ==="") ){
       addItem.itemQtyClass="has-error";
     }else{
       addItem.itemQtyClass="has-success";
