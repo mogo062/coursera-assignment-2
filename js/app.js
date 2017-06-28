@@ -17,13 +17,13 @@ function AddItemToBuyController(ShoppingListCheckOffService){
   ShoppingListCheckOffService.addItemToBuy('milks',2);
   ShoppingListCheckOffService.addItemToBuy('chocaltes',20);
   addItem.addItemToBuy=function(){
-    if((addItem.itemName === undefined) || (addItem.itemName ==="") ){
+  /*  if((addItem.itemName === undefined) || (addItem.itemName ==="") ){
       return;
     }
 
     if((addItem.itemQuantity === undefined) || (addItem.itemQuantity ==="") || (addItem.itemQuantity <= 0)){
       return;
-    }
+    }*/
     ShoppingListCheckOffService.addItemToBuy(addItem.itemName, addItem.itemQuantity);
   };
 
