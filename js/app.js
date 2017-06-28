@@ -11,9 +11,12 @@ AddItemToBuyController.$inject=['ShoppingListCheckOffService'];
 function AddItemToBuyController(ShoppingListCheckOffService){
   var addItem = this;
 
-  ShoppingListCheckOffService.addItemToBuy('cookies',10);
-  ShoppingListCheckOffService.addItemToBuy('milks',2);
-  ShoppingListCheckOffService.addItemToBuy('chocaltes',20);
+  ShoppingListCheckOffService.addItemToBuy('Cookies',10);
+  ShoppingListCheckOffService.addItemToBuy('Sugary Drinks',2);
+  ShoppingListCheckOffService.addItemToBuy('choclates',20);
+  ShoppingListCheckOffService.addItemToBuy('Pepto Bismol',10);
+  ShoppingListCheckOffService.addItemToBuy('Chips',8);
+
   addItem.addItemToBuy=function(){
     ShoppingListCheckOffService.addItemToBuy(addItem.itemName, addItem.itemQuantity);
   };
