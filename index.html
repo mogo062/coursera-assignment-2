@@ -59,6 +59,10 @@
               <button class="btn btn-default" ng-click="toBuy.addItemFromToBuyToBought($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button>
           </td>
         </tr>
+        <tr ng-if="toBuy.items.length != 0">
+          <td colspan="3"></td>
+          <td><button class="btn btn-default" ng-click="toBuy.addAllItemFromToBuyToBought();"><span class="glyphicon glyphicon-ok"></span> Bought All</button></td>
+        </tr>
         <tr ng-if="toBuy.items.length === 0">
           <td><div class="emptyMessage">Everything is bought!</div></td>
         </tr>
@@ -78,11 +82,15 @@
           <td>{{item.quantity}}</td>
           <td>{{item.name}}</td>
           <td>
-               <button class="btn btn-default" ng-click="alreadyBought.removeItemFromBought($index);"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+               <button class="btn btn-default" ng-click="alreadyBought.removeItemFromBought($index);"><span class="glyphicon glyphicon-ok"></span> remove</button>
           </td>
        </tr>
+       <tr ng-if="alreadyBought.items.length != 0">
+         <td colspan="3"></td>
+         <td><button class="btn btn-default" ng-click="alreadyBought.removeAllItemFromBought();"><span class="glyphicon glyphicon-ok"></span> remove All</button></td>
+       </tr>
        <tr ng-if="alreadyBought.items.length === 0">
-           <td colspan="5"><div  class="emptyMessage">Nothing bought yet.</div></td>
+           <td><div class="emptyMessage">Nothing bought yet.</div></td>
        </tr>
     </table>
      <!--ul>

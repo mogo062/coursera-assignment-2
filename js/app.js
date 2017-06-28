@@ -44,10 +44,12 @@ function ToBuyController(ShoppingListCheckOffService){
   var toBuy = this;
   toBuy.items = ShoppingListCheckOffService.getToBuyItems();
   toBuy.addItemFromToBuyToBought=function(index){
-    console.log(index);
     ShoppingListCheckOffService.addItemFromToBuyToBought(index);
   };
 
+ toBuy.addAllItemFromToBuyToBought=function(){
+   ShoppingListCheckOffService.addAllItemFromToBuyToBought();
+ };
 };
 AlreadyBoughtController.$inject=['ShoppingListCheckOffService'];
 function AlreadyBoughtController(ShoppingListCheckOffService){
@@ -55,8 +57,10 @@ function AlreadyBoughtController(ShoppingListCheckOffService){
   alreadyBought.items = ShoppingListCheckOffService.getToBoughtItems();
 
   alreadyBought.removeItemFromBought=function(index){
-    console.log(index);
     ShoppingListCheckOffService.removeItemFromBought(index);
+  };
+  alreadyBought.removeAllItemFromBought=function(){
+    ShoppingListCheckOffService.removeAllItemFromBought();
   };
 };
 
@@ -89,6 +93,26 @@ function ShoppingListCheckOffService(){
     toBuy.push(item);
     bought.splice($index,1);
   };
+ service.addAllItemFromToBuyToBought=function(){
+
+   service.appendOrCopyArrayToArray(toBuy, bought);
+   toBuy.splice(0,toBuy.length);
+ };
+
+ service.removeAllItemFromBought = function(){
+   service.appendOrCopyArrayToArray(bought, toBuy);
+   bought.splice(0,bought.length);
+ };
+
+service.appendOrCopyArrayToArray = function (fromArr, toArr){
+  if(toArr.length === 0){
+       angular.copy(fromArr, toArr);
+  }else{
+    angular.forEach(fromArr, function(item) {
+        toArr.push(item);
+      });
+  }
+}
 
 };
 
