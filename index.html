@@ -30,19 +30,21 @@
 
   <div class="row">
     <div class="col-md-12" ng-controller="AddItemToBuyController as addItem">
-      <div class="form-group {{addItem.itemNameClass}}">
-          <input type="text" ng-model="addItem.itemName"
-          placeholder="Item Name"
-          class="form-control" ng-keyup="addItem.validateItemNameField();" required>
-      </div>
-      <div class="form-group {{addItem.itemQtyClass}}">
-          <input type="number" ng-model="addItem.itemQuantity"
-          placeholder="Item Quantity"
-          class="form-control" ng-change="addItem.validateItemQuantityField();" required>
-      </div>
-      <div class="form-group">
-            <button class="btn btn-default"  ng-click="addItem.addItemToBuy();"><span class="glyphicon glyphicon-plus"></span> Bought</button></li>
-      </div>
+      <form name="form" novalidate>
+        <div class="form-group {{addItem.itemNameClass}}">
+            <input type="text" name="itemName" ng-model="addItem.itemName"
+            placeholder="Item Name"
+            class="form-control" ng-keyup="addItem.validateItemNameField();" required>
+        </div>
+        <div class="form-group {{addItem.itemQtyClass}}">
+            <input type="number" name="itemQuantity" ng-model="addItem.itemQuantity"
+            placeholder="Item Quantity"
+            class="form-control" ng-change="addItem.validateItemQuantityField();" required>
+        </div>
+        <div class="form-group">
+              <button class="btn btn-default" ng-disabled="form.itemName.$error.required || form.itemQuantity.$error.required || addItem.itemQuantity <=0" ng-click="addItem.addItemToBuy();"><span class="glyphicon glyphicon-plus"></span> Bought</button></li>
+        </div>
+      </form>
     </div>
     <!-- To Buy List -->
     <div class="col-md-6" ng-controller="ToBuyController as toBuy">
